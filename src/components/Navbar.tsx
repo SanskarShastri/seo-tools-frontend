@@ -57,8 +57,8 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
+          ? 'bg-gradient-to-r from-slate-800 to-slate-900 shadow-lg'
+          : 'bg-gradient-to-r from-slate-800/95 to-slate-900/95'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,7 +66,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <span className={`text-2xl font-bold bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent`}>
+              <span className={`text-2xl font-bold bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent`}>
                 SEO Tools
               </span>
             </Link>
@@ -82,9 +82,7 @@ const Navbar = () => {
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
                     pathname === link.href
                       ? 'bg-gradient-to-r from-teal-500 to-cyan-600 text-white'
-                      : isScrolled 
-                        ? 'text-gray-700 hover:bg-teal-50 hover:text-teal-600'
-                        : 'text-white hover:bg-white/10 hover:text-white'
+                      : 'text-gray-200 hover:bg-slate-700 hover:text-white'
                   }`}
                 >
                   {link.label}
@@ -95,11 +93,7 @@ const Navbar = () => {
               <div className="relative" ref={languageDropdownRef}>
                 <button 
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
-                  className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                    isScrolled 
-                      ? 'text-gray-700 hover:bg-teal-50 hover:text-teal-600'
-                      : 'text-white hover:bg-white/10 hover:text-white'
-                  }`}
+                  className="flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 text-gray-200 hover:bg-slate-700 hover:text-white"
                 >
                   <span className="mr-1">{currentLanguage.flag}</span>
                   <span>{currentLanguage.label}</span>
@@ -116,12 +110,12 @@ const Navbar = () => {
                 
                 {isLanguageOpen && (
                   <div 
-                    className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-slate-800 ring-1 ring-black ring-opacity-5 focus:outline-none"
                   >
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-slate-700 flex items-center"
                         onClick={() => {
                           // Set the selected language
                           setCurrentLanguage(lang);
@@ -141,11 +135,7 @@ const Navbar = () => {
             <div className="ml-6 flex items-center space-x-3">
               <button
                 onClick={openLoginModal}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                  isScrolled 
-                    ? 'text-teal-600 hover:bg-teal-50 hover:shadow-sm'
-                    : 'text-white hover:bg-white/10 hover:shadow-sm'
-                }`}
+                className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-200 hover:bg-slate-700 hover:text-white"
               >
                 Login
               </button>
@@ -162,11 +152,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 ${
-                isScrolled 
-                  ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50'
-                  : 'text-white hover:text-white hover:bg-white/10'
-              }`}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500"
             >
               <span className="sr-only">Open main menu</span>
               {!isMobileMenuOpen ? (
@@ -211,7 +197,7 @@ const Navbar = () => {
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden`}
       >
-        <div className={`px-2 pt-2 pb-3 space-y-1 sm:px-3 ${isScrolled ? 'bg-white/80 backdrop-blur-md' : 'bg-black/30 backdrop-blur-md'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-800">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -219,9 +205,7 @@ const Navbar = () => {
               className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                 pathname === link.href
                   ? 'bg-gradient-to-r from-teal-500 to-cyan-600 text-white'
-                  : isScrolled
-                    ? 'text-gray-700 hover:bg-teal-50 hover:text-teal-600'
-                    : 'text-white hover:bg-white/10'
+                  : 'text-gray-200 hover:bg-slate-700 hover:text-white'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -231,7 +215,7 @@ const Navbar = () => {
           
           {/* Mobile Language Options */}
           <div className="pt-2">
-            <p className={`px-3 py-1 text-sm font-medium ${isScrolled ? 'text-gray-500' : 'text-gray-300'}`}>
+            <p className="px-3 py-1 text-sm font-medium text-gray-400">
               Language
             </p>
             {languages.map((lang) => (
@@ -240,9 +224,7 @@ const Navbar = () => {
                 className={`flex items-center w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                   currentLanguage.code === lang.code 
                     ? 'bg-gradient-to-r from-teal-500 to-cyan-600 text-white'
-                    : isScrolled
-                      ? 'text-gray-700 hover:bg-teal-50 hover:text-teal-600'
-                      : 'text-white hover:bg-white/10'
+                    : 'text-gray-200 hover:bg-slate-700 hover:text-white'
                 }`}
                 onClick={() => {
                   // Set the selected language
